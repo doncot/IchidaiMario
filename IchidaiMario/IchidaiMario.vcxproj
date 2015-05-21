@@ -11,11 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="InfernoEngine\Game.cpp" />
+    <ClCompile Include="InfernoEngine\GraphicsDirectX9X.cpp" />
     <ClCompile Include="InfernoEngine\Input.cpp" />
     <ClCompile Include="InfernoEngine\SimpleWindow.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InfernoEngine\Game.h" />
+    <ClInclude Include="InfernoEngine\Graphics.h" />
     <ClInclude Include="InfernoEngine\Input.h" />
     <ClInclude Include="InfernoEngine\SimpleWindow.h" />
   </ItemGroup>
