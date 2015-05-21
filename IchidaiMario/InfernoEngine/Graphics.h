@@ -21,6 +21,7 @@ public:
 	void Finalize();
 
 	void SetBackScreenColor(const int r, const int g, const int b);
+	void FlashBackScreen() const;
 	void FlashBackScreen(const int r,const int g,const int b) const;
 	bool BeginScene() const;
 	void EndScene() const;

@@ -4,7 +4,7 @@
 namespace Inferno
 {
 Graphics::Graphics()
-:m_d3d(nullptr), m_d3dDevice(nullptr), m_sprite(nullptr)
+	:m_d3d(nullptr), m_d3dDevice(nullptr), m_sprite(nullptr), m_backScreenColor(0,0,150)
 {
 }
 
@@ -56,9 +56,17 @@ void Graphics::SetBackScreenColor(const int r, const int g, const int b)
 	m_backScreenColor.Blue = b;
 }
 
+void Graphics::FlashBackScreen() const
+{
+	auto c = m_backScreenColor;
+
+	m_d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(c.Red, c.Green, c.Blue), 1.0f, 0);
+	m_d3dDevice->Present(NULL, NULL, NULL, NULL);
+}
+
 void Graphics::FlashBackScreen(const int r, const int g, const int b) const
 {
-	m_d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(r, g, b), 1.0f, 0);
+	m_d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(r,g,b), 1.0f, 0);
 	m_d3dDevice->Present(NULL, NULL, NULL, NULL);
 }
 
