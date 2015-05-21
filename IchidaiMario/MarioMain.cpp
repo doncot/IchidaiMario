@@ -43,12 +43,11 @@ void MarioGame::GameLoop()
 //•`‰æ
 void MarioGame::Draw()
 {
-	if (m_graphics.BeginScene() && Base::m_graphics.BeginSprite())
+	if (BeginDrawing() == true)
 	{
 		//‚±‚±‚É•`‰æˆ—‚ğ‘‚­
 		teki.Draw(m_graphics);
 
 	}
-	m_graphics.EndSprite();
-	m_graphics.EndScene();
+	EndDrawing();
 }

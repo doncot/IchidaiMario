@@ -69,14 +69,22 @@ void Game::GameLoop()
 #endif //_DEBUG
 }
 
-void Game::Draw()
-{
-
-}
+void Game::Draw() const {}
 
 void Game::Exit()
 {
 	Base::Terminate();
+}
+
+bool Game::BeginDrawing() const
+{
+	return m_graphics.BeginScene() && m_graphics.BeginSprite();
+}
+
+void Game::EndDrawing() const
+{
+	m_graphics.EndSprite();
+	m_graphics.EndScene();
 }
 
 }

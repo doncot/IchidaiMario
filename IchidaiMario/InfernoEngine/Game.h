@@ -19,10 +19,13 @@ public:
 	virtual ~Game();
 	virtual void Initialize();
 	virtual void GameLoop();
-	virtual void Draw();
+	virtual void Draw() const;
 	virtual void Exit();
 
 	void SetClientSize(const int width, const int height);
+
+	bool BeginDrawing() const;
+	void EndDrawing() const;
 
 protected:
 	Graphics m_graphics;
