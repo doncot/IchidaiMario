@@ -1,7 +1,8 @@
 #include<Windows.h>
 #include<tchar.h>
-
 #include<Game.h>
+
+#include"MarioMain.h"
 
 //メモリリーク検出用。
 #ifdef _DEBUG
@@ -23,9 +24,10 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 	//game.SetTitleText(_T("フライ・お空ちゃん・フライ！"));
 	//game.Show();
 
-	Game game;
+	MarioGame game;
 	game.Initialize();
 	game.SetTitleText("市大マリオ");
+	game.Show();
 
 	MSG msg;
 	while (true)

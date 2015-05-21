@@ -13,4 +13,7 @@ public:
 	bool Initialize();
 	bool GameLoop();
 
+private:
+	//e‚ğŒÄ‚×‚é‚æ‚¤‚É
+	typedef Game Base;
 };

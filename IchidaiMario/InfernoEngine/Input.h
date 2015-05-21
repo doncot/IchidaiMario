@@ -1,5 +1,19 @@
+/*
+Input.h
+入力機器
+*/
+
 #pragma once
 #include<Windows.h>
+
+/*
+VKEY早見表
+VK_ESCAPE	0x1B
+VK_LEFT	0x25	左方向キー
+VK_UP	0x26	上方向キー
+VK_RIGHT	0x27	右方向キー
+VK_DOWN	0x28	下方向キー
+*/
 
 namespace InputNS {
 	const int KeyLen = 256;
@@ -41,7 +55,5 @@ private:
 	//入力コンテキストハンドル（IMEを無効にする際保存しておき、再び有効に戻す際に使う）
 	HIMC m_hIMC;
 };
-
-
-
 }
+

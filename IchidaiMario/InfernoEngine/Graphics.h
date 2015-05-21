@@ -29,7 +29,7 @@ public:
 	LPDIRECT3DDEVICE9 GetDevice() const;
 	LPD3DXSPRITE GetSprite() const;
 
-	bool LoadTexture(const std::wstring& filename,
+	bool LoadTexture(const std::string& filename,
 		unsigned* width, unsigned* height, LP_TEXTURE* tex) const;
 
 	void TransformSprite(const Matrix* m) const;

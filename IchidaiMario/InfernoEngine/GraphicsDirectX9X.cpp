@@ -87,7 +87,7 @@ LPD3DXSPRITE Graphics::GetSprite() const
 	return m_sprite;
 }
 
-bool Graphics::LoadTexture(const std::wstring& filename,unsigned* width, unsigned* height, LP_TEXTURE* tex) const
+bool Graphics::LoadTexture(const std::string& filename,unsigned* width, unsigned* height, LP_TEXTURE* tex) const
 {
 	if (filename.empty())
 	{
@@ -98,13 +98,13 @@ bool Graphics::LoadTexture(const std::wstring& filename,unsigned* width, unsigne
 	HRESULT hr=0;
 	D3DXIMAGE_INFO info;
 
-	hr = D3DXGetImageInfoFromFileW(filename.c_str(), &info);
+	hr = D3DXGetImageInfoFromFile(filename.c_str(), &info);
 	if (hr != D3D_OK)
 	{
 		//throw FileNotFound(filename);
 	}
 
-	hr = D3DXCreateTextureFromFileExW(
+	hr = D3DXCreateTextureFromFileEx(
 		m_d3dDevice,
 		filename.c_str(),
 		info.Width,info.Height,
