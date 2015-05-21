@@ -5,6 +5,7 @@
 
 #include"MarioMain.h"
 
+#pragma region DetectMemoryLeak
 //メモリリーク検出用。
 #ifdef _DEBUG
 #define _CRTDBG_MAP_ALLOC
@@ -15,12 +16,14 @@
 #define new DBG_NEW
 #endif
 #endif
+#pragma endregion
 
 using namespace Inferno;
 using namespace std;
 
 int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 {
+	//定型
 	MarioGame game;
 	game.Initialize();
 	game.SetTitleText("市大マリオ");
