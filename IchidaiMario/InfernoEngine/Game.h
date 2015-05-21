@@ -9,6 +9,9 @@ Game.h
 #include<Input.h>
 //#include"Timer.h"
 
+namespace Inferno
+{
+
 class Game: public Inferno::SimpleWindow
 {
 public:
@@ -21,8 +24,8 @@ public:
 	void SetClientSize(const int width, const int height);
 
 protected:
-	Inferno::Graphics m_graphics;
-	Inferno::Input m_input;	
+	Graphics m_graphics;
+	Input m_input;	
 
 	bool m_IsInitialized;
 	//Inferno::Timer m_globalTimer; //ゲーム開始時にスタート
@@ -30,5 +33,7 @@ protected:
 	int m_frameCount; //前回のループからの経過フレーム
 
 private:
-	typedef Inferno::SimpleWindow Base;
+	typedef SimpleWindow Base;
 };
+
+}

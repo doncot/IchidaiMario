@@ -30,6 +30,9 @@
     <ClCompile Include="InfernoEngine\MyTypes.cpp">
       <Filter>InfernoEngine</Filter>
     </ClCompile>
+    <ClCompile Include="MarioMain.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InfernoEngine\SimpleWindow.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="InfernoEngine\Common.h">
       <Filter>InfernoEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioMain.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
