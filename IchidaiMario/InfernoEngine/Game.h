@@ -15,10 +15,10 @@ public:
 	Game();
 	virtual ~Game();
 	virtual bool Initialize();
-	void SetClientSize(const int width, const int height);
-
 	virtual bool GameLoop();
 	virtual void Exit();
+
+	void SetClientSize(const int width, const int height);
 
 protected:
 	Inferno::Graphics m_graphics;

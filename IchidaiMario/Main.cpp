@@ -1,7 +1,7 @@
 #include<Windows.h>
 #include<tchar.h>
 
-#include<SimpleWindow.h>
+#include<Game.h>
 
 //メモリリーク検出用。
 #ifdef _DEBUG
@@ -23,8 +23,8 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 	//game.SetTitleText(_T("フライ・お空ちゃん・フライ！"));
 	//game.Show();
 
-	SimpleWindow window;
-	window.Initialize();
+	Game game;
+	game.Initialize();
 
 	MSG msg;
 	while (true)
@@ -39,8 +39,7 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 		else
 		{
 			//ゲームループ
-			window.Show();
-
+			game.GameLoop();
 		}
 		Sleep(1);
 	}
