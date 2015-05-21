@@ -49,13 +49,15 @@ void Graphics::Finalize()
 	SAFE_RELEASE(m_d3d);
 }
 
-void Graphics::FlashBackScreen(const int r, const int g, const int b) const
+void Graphics::SetBackScreenColor(const int r, const int g, const int b)
 {
-	//後からでもフラッシュできるように色を覚えておく
 	m_backScreenColor.Red = r;
 	m_backScreenColor.Green = g;
 	m_backScreenColor.Blue = b;
+}
 
+void Graphics::FlashBackScreen(const int r, const int g, const int b) const
+{
 	m_d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(r, g, b), 1.0f, 0);
 	m_d3dDevice->Present(NULL, NULL, NULL, NULL);
 }

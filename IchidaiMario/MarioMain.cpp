@@ -39,6 +39,7 @@ void MarioGame::GameLoop()
 
 	//“G‚ð“®‚©‚·
 	teki.AMove(200, 200);
+
 }
 
 //•`‰æ

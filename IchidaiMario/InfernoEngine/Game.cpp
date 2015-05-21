@@ -49,7 +49,7 @@ void Game::SetClientSize(const int width, const int height)
 {
 	Base::Resize(width, height);
 	Base::SetPos(Base::Center, Base::Center);
-	m_graphics.DisplayBlankScreen(0, 0, 128);
+	m_graphics.FlashBackScreen(0, 0, 128);
 }
 
 void Game::GameLoop()

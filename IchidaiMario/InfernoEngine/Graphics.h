@@ -20,6 +20,7 @@ public:
 	void Initialize(HWND hWnd);
 	void Finalize();
 
+	void SetBackScreenColor(const int r, const int g, const int b);
 	void FlashBackScreen(const int r,const int g,const int b) const;
 	bool BeginScene() const;
 	void EndScene() const;
@@ -43,6 +44,6 @@ private:
 	LPD3DXSPRITE m_sprite;
 
 	//íPêFîwåiÇÃêF
-	mutable Color m_backScreenColor;
+	Color m_backScreenColor;
 };
 }
