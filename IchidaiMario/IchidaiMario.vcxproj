@@ -18,9 +18,11 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InfernoEngine\Common.h" />
     <ClInclude Include="InfernoEngine\Game.h" />
     <ClInclude Include="InfernoEngine\Graphics.h" />
     <ClInclude Include="InfernoEngine\Input.h" />
+    <ClInclude Include="InfernoEngine\MyTypes.h" />
     <ClInclude Include="InfernoEngine\SimpleWindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -55,7 +57,8 @@
     <IncludePath>InfernoEngine;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);InfernoEngine</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)\Include;InfernoEngine</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
