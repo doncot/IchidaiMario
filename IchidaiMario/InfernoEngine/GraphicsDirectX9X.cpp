@@ -1,5 +1,6 @@
 #include"Graphics.h"
 #include"Common.h"
+#include<InfernoException.h>
 
 namespace Inferno
 {
@@ -35,7 +36,7 @@ void Graphics::Initialize(HWND hWnd)
 	//スプライト作成
 	if (FAILED(D3DXCreateSprite(m_d3dDevice, &m_sprite)))
 	{
-		//CreationFailed(L"スプライト作成に失敗");
+		throw GraphicsError(TEXT("スプライト作成に失敗。"));
 	}
 
 	//初期化が完了したら青クリアをする
@@ -118,7 +119,7 @@ bool Graphics::LoadTexture(const std::string& filename,unsigned* width, unsigned
 	hr = D3DXGetImageInfoFromFile(filename.c_str(), &info);
 	if (hr != D3D_OK)
 	{
-		//throw FileNotFound(filename);
+		throw GraphicsError("テクスチャが不正です。");
 	}
 
 	hr = D3DXCreateTextureFromFileEx(
@@ -138,7 +139,7 @@ bool Graphics::LoadTexture(const std::string& filename,unsigned* width, unsigned
 
 	if (hr == D3DXERR_INVALIDDATA)
 	{
-		//throw FileNotFound(filename);
+		throw GraphicsError("テクスチャ生成失敗。");
 	}
 
 	*width = info.Width;

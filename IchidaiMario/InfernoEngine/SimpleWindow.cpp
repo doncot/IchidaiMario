@@ -3,6 +3,7 @@
 #include<Windows.h>
 #include<tchar.h>
 #include<exception>
+#include<stdexcept>
 //#include"TString.h"
 //#include"MyTypes.h"
 
@@ -48,7 +49,7 @@ void SimpleWindow::Initialize()
 	//WindowClass登録
 	if (!RegisterClassEx(&m_wc))
 	{
-		//throw Inferno::CreationFailed(TEXT("ウィンドウクラス"));
+		throw std::runtime_error(TEXT("ウィンドウクラスが作成できませんでした。"));
 	}
 
 	//ウィンドウを生成
@@ -60,7 +61,7 @@ void SimpleWindow::Initialize()
 		NULL, m_wc.hInstance, NULL);
 	if (m_hWnd == NULL)
 	{
-		//throw Inferno::CreationFailed(TEXT("ウィンドウ"));
+		throw std::runtime_error(TEXT("ウィンドウが生成できませんでした。"));
 	}
 
 	this->Resize(800, 600);
