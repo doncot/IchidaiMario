@@ -14,8 +14,10 @@
     <ClCompile Include="InfernoEngine\Game.cpp" />
     <ClCompile Include="InfernoEngine\GraphicsDirectX9X.cpp" />
     <ClCompile Include="InfernoEngine\Input.cpp" />
+    <ClCompile Include="InfernoEngine\MyTypes.cpp" />
     <ClCompile Include="InfernoEngine\SimpleWindow.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MarioMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InfernoEngine\Common.h" />
@@ -24,6 +26,7 @@
     <ClInclude Include="InfernoEngine\Input.h" />
     <ClInclude Include="InfernoEngine\MyTypes.h" />
     <ClInclude Include="InfernoEngine\SimpleWindow.h" />
+    <ClInclude Include="MarioMain.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{21A77ABE-61B9-4C01-9623-0654D69EA81C}</ProjectGuid>

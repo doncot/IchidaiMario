@@ -8,9 +8,10 @@ namespace
 	LRESULT WINAPI MessageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 }
 
-
+namespace Inferno
+{
 Game::Game()
-:m_IsInitialized(false), m_elapsedFrame(0), m_frameCount(0)
+	:m_IsInitialized(false), m_elapsedFrame(0), m_frameCount(0)
 {
 	InputHandle = &m_input;
 }
@@ -40,14 +41,14 @@ bool Game::Initialize()
 	m_graphics.Initialize(GetHWND());
 
 	//タイマーをスタート
-	
+
 
 	return true;
 }
 
 void Game::SetClientSize(const int width, const int height)
 {
-	Base::Resize(width,height);
+	Base::Resize(width, height);
 	Base::SetPos(Base::Center, Base::Center);
 	m_graphics.DisplayBlankScreen(0, 0, 128);
 }
@@ -60,13 +61,14 @@ bool Game::GameLoop()
 	m_elapsedFrame++;
 	previousFrame = m_elapsedFrame;
 
+#ifdef _DEBUG
 	//Escキーでゲーム終了
 	if (m_input.IsKeyPressed(VK_ESCAPE))
 	{
 		Exit();
 		return false;
 	}
-
+#endif //_DEBUG
 
 	return true;
 }
@@ -74,6 +76,8 @@ bool Game::GameLoop()
 void Game::Exit()
 {
 	Base::Terminate();
+}
+
 }
 
 namespace

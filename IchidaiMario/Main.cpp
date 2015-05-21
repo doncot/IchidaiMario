@@ -25,6 +25,7 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 
 	Game game;
 	game.Initialize();
+	game.SetTitleText("Žs‘åƒ}ƒŠƒI");
 
 	MSG msg;
 	while (true)
