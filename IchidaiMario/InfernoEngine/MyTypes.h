@@ -113,13 +113,16 @@ long GetWidthOfRect(const Rect& r);
 long GetHeightOfRect(const Rect& r);
 Rect AddRect(const Rect& r1, const Rect& r2);
 
-/*
-//矩形のサイズを表す構造体（位置情報は持たない）
-//＊Rectがあれば済むのではないか？
-template<typename T> struct RectSize
+//Color
+struct Color
 {
-	T width;
-	T height;
+	Color() : Red(0), Green(0), Blue(0) {}
+	Color(int red,int green,int blue) : Red(red), Green(green), Blue(blue) {}
+
+	int Red;
+	int Green;
+	int Blue;
 };
-*/
+
+
 }

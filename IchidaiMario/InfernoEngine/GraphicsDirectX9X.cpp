@@ -39,7 +39,7 @@ void Graphics::Initialize(HWND hWnd)
 	}
 
 	//初期化が完了したら青クリアをする
-	this->DisplayBlankScreen(0, 0, 128);
+	this->FlashBackScreen(0, 0, 128);
 }
 
 void Graphics::Finalize()
@@ -49,15 +49,22 @@ void Graphics::Finalize()
 	SAFE_RELEASE(m_d3d);
 }
 
-void Graphics::DisplayBlankScreen(const int r, const int g, const int b) const
+void Graphics::FlashBackScreen(const int r, const int g, const int b) const
 {
+	//後からでもフラッシュできるように色を覚えておく
+	m_backScreenColor.Red = r;
+	m_backScreenColor.Green = g;
+	m_backScreenColor.Blue = b;
+
 	m_d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(r, g, b), 1.0f, 0);
 	m_d3dDevice->Present(NULL, NULL, NULL, NULL);
 }
 
 bool Graphics::BeginScene() const
 {
-	m_d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0, 0, 128), 1.0f, 0);
+	auto c = m_backScreenColor;
+
+	m_d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(c.Red, c.Green, c.Blue), 1.0f, 0);
 	return SUCCEEDED(m_d3dDevice->BeginScene());
 }
 
