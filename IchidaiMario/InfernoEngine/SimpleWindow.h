@@ -22,9 +22,9 @@ public:
 public:
 	SimpleWindow();
 	~SimpleWindow();
-	virtual bool Initialize();
+	virtual void Initialize();
 	void Resize(const int width, const int height);
-	void Show() const; //現在の位置とサイズでウィンドウをアクティブにする
+	virtual void Show() const; //現在の位置とサイズでウィンドウをアクティブにする
 	void SetTitleText(LPCTSTR str) const;
 	void SetPos(const WindowPostion x, const WindowPostion y);
 

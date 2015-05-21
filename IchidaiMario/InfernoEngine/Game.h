@@ -17,8 +17,9 @@ class Game: public Inferno::SimpleWindow
 public:
 	Game();
 	virtual ~Game();
-	virtual bool Initialize();
-	virtual bool GameLoop();
+	virtual void Initialize();
+	virtual void GameLoop();
+	virtual void Draw();
 	virtual void Exit();
 
 	void SetClientSize(const int width, const int height);

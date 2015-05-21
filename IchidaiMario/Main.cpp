@@ -1,6 +1,7 @@
 #include<Windows.h>
 #include<tchar.h>
 #include<Game.h>
+#include<memory>
 
 #include"MarioMain.h"
 
@@ -16,14 +17,10 @@
 #endif
 
 using namespace Inferno;
+using namespace std;
 
 int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 {
-	//SVShooter game;
-	//game.Initialize();
-	//game.SetTitleText(_T("フライ・お空ちゃん・フライ！"));
-	//game.Show();
-
 	MarioGame game;
 	game.Initialize();
 	game.SetTitleText("市大マリオ");
@@ -43,8 +40,12 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 		{
 			//ゲームループ
 			game.GameLoop();
+			//描画
+			game.Draw();
 		}
 		Sleep(1);
 	}
+
+
 	return msg.wParam; //作法
 }

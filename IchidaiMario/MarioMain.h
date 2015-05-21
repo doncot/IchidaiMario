@@ -7,11 +7,12 @@ MarioMain.h
 #include<Input.h>
 
 
-class MarioGame : public Inferno::Game
+class MarioGame final : public Inferno::Game
 {
 public:
-	bool Initialize();
-	bool GameLoop();
+	void Initialize();
+	void GameLoop();
+	void Draw();
 
 private:
 	//e‚ğŒÄ‚×‚é‚æ‚¤‚É

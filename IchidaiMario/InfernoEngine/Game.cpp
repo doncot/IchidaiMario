@@ -23,7 +23,7 @@ Game::~Game()
 	InputHandle = nullptr;
 }
 
-bool Game::Initialize()
+void Game::Initialize()
 {
 	//ウィンドウの初期化
 	Base::Initialize();
@@ -43,7 +43,6 @@ bool Game::Initialize()
 	//タイマーをスタート
 
 
-	return true;
 }
 
 void Game::SetClientSize(const int width, const int height)
@@ -53,7 +52,7 @@ void Game::SetClientSize(const int width, const int height)
 	m_graphics.DisplayBlankScreen(0, 0, 128);
 }
 
-bool Game::GameLoop()
+void Game::GameLoop()
 {
 	//フレーム管理
 	static int previousFrame = 0;
@@ -66,11 +65,13 @@ bool Game::GameLoop()
 	if (m_input.IsKeyPressed(VK_ESCAPE))
 	{
 		Exit();
-		return false;
 	}
 #endif //_DEBUG
+}
 
-	return true;
+void Game::Draw()
+{
+
 }
 
 void Game::Exit()

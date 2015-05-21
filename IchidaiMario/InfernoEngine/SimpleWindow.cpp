@@ -27,7 +27,7 @@ SimpleWindow::~SimpleWindow()
 	UnregisterClass(className, m_wc.hInstance);
 }
 
-bool SimpleWindow::Initialize()
+void SimpleWindow::Initialize()
 {
 	//‚DPIƒtƒ‰ƒO‚ð—§‚Ä‚é
 	//::SetProcessDPIAware();
@@ -65,7 +65,6 @@ bool SimpleWindow::Initialize()
 
 	this->Resize(800, 600);
 
-	return true;
 }
 
 void SimpleWindow::Resize(const int width, const int height)

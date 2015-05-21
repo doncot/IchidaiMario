@@ -13,20 +13,19 @@ namespace
 }
 
 //‰Šú‰»
-bool MarioGame::Initialize()
+void MarioGame::Initialize()
 {
 	Base::Initialize();
 
 	//‚±‚±‚©‚ç‰Šú‰»ˆ—
 	teki.Initialize();
 	teki.LoadTextureFromFile(m_graphics, "teki.bmp");
-		
 
-	return true;
+
 }
 
 //ƒQ[ƒ€ƒ‹[ƒviˆ—‚Í‚±‚±‚É‘‚¢‚Ä‚¢‚­j
-bool MarioGame::GameLoop()
+void MarioGame::GameLoop()
 {
 	Base::GameLoop();
 
@@ -38,17 +37,19 @@ bool MarioGame::GameLoop()
 		MessageBox(nullptr,"A‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½","Message",MB_OK);
 	}
 
-	
-
 	//“G‚ğ“®‚©‚·
+	teki.AMove(200, 200);
+}
 
+//•`‰æ
+void MarioGame::Draw()
+{
+	if (m_graphics.BeginScene() && Base::m_graphics.BeginSprite())
+	{
+		//‚±‚±‚É•`‰æˆ—‚ğ‘‚­
+		teki.Draw(m_graphics);
 
-	m_graphics.BeginScene(); m_graphics.BeginSprite();
-
-	//•`‰æ**************************
-	teki.Draw(m_graphics);
-
-	m_graphics.EndSprite(); m_graphics.EndScene();
-
-	return true;
+	}
+	m_graphics.EndSprite();
+	m_graphics.EndScene();
 }
