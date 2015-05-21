@@ -10,6 +10,9 @@
     <Filter Include="InfernoEngine">
       <UniqueIdentifier>{6f773d9c-408b-4b90-853a-f7f43974c844}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InfernoEngine\Exception">
+      <UniqueIdentifier>{14c1ade3-2d6d-4db7-8418-5382a595deb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InfernoEngine\SimpleWindow.cpp">
@@ -81,6 +84,9 @@
       <Filter>InfernoEngine</Filter>
     </ClInclude>
     <ClInclude Include="InfernoEngine\Collision.h">
+      <Filter>InfernoEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="InfernoEngine\MyException.h">
       <Filter>InfernoEngine</Filter>
     </ClInclude>
   </ItemGroup>
