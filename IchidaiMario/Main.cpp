@@ -1,7 +1,7 @@
 #include<Windows.h>
 #include<tchar.h>
-#include<Game.h>
 #include<memory>
+#include<Inferno.h>
 
 #include"MarioMain.h"
 
@@ -48,7 +48,6 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 		}
 		Sleep(1);
 	}
-
 
 	return msg.wParam; //çÏñ@
 }

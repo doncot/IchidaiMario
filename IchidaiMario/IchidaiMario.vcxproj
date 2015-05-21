@@ -30,6 +30,7 @@
     <ClInclude Include="InfernoEngine\Game.h" />
     <ClInclude Include="InfernoEngine\GameElements.h" />
     <ClInclude Include="InfernoEngine\Graphics.h" />
+    <ClInclude Include="InfernoEngine\Inferno.h" />
     <ClInclude Include="InfernoEngine\Input.h" />
     <ClInclude Include="InfernoEngine\InfernoException.h" />
     <ClInclude Include="InfernoEngine\MyTypes.h" />

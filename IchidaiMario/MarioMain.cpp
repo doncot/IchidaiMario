@@ -3,8 +3,6 @@
 #include<Input.h>
 #include<GameElements.h>
 
-using namespace Inferno;
-
 namespace
 {
 	//“GƒLƒƒƒ‰‚È‚Ç‚Ì•Ï”‚Í‚±‚±‚É‘‚¯‚é

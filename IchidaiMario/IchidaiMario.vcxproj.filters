@@ -86,5 +86,8 @@
     <ClInclude Include="InfernoEngine\InfernoException.h">
       <Filter>InfernoEngine</Filter>
     </ClInclude>
+    <ClInclude Include="InfernoEngine\Inferno.h">
+      <Filter>InfernoEngine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
