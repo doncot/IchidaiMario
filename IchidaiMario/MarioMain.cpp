@@ -14,10 +14,11 @@ namespace
 void MarioGame::Initialize()
 {
 	Base::Initialize();
+	SetTitleText("市大マリオ"); //ウィンドウタイトルに表示する文字列
 
 	//ここから初期化処理
 	teki.Initialize();
-	teki.LoadTextureFromFile(m_graphics, "teki.bmp");
+	teki.LoadTextureFromFile(m_graphics, "Resource\\teki.bmp");
 
 
 }

@@ -23,13 +23,16 @@ using namespace std;
 
 int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 {
+	MSG msg;
+
+	//グローバルエラーハンドラ
+	try
+	{
 	//定型
 	MarioGame game;
 	game.Initialize();
-	game.SetTitleText("市大マリオ");
 	game.Show();
 
-	MSG msg;
 	while (true)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
@@ -47,6 +50,11 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 			game.Draw();
 		}
 		Sleep(1);
+	}
+	}
+	catch (exception e)
+	{
+		e.what();
 	}
 
 	return msg.wParam; //作法

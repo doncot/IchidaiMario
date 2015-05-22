@@ -41,6 +41,9 @@
     <ClInclude Include="InfernoEngine\Timer.h" />
     <ClInclude Include="MarioMain.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource\teki.bmp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{21A77ABE-61B9-4C01-9623-0654D69EA81C}</ProjectGuid>
     <RootNamespace>IchidaiMario</RootNamespace>
