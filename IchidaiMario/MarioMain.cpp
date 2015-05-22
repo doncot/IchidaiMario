@@ -39,11 +39,11 @@ void MarioGame::GameLoop()
 	//“G‚ð“®‚©‚·
 	if (m_input.IsButtonDown(PadButton::Left))
 	{
-		teki.RMove(-7, 0);
+		teki.RMove(-3, 0);
 	}
 	else if (m_input.IsButtonDown(PadButton::Right))
 	{
-		teki.RMove(7, 0);
+		teki.RMove(3, 0);
 	}
 	
 }

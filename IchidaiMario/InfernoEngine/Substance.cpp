@@ -107,6 +107,7 @@ void Substance::Draw(const Graphics& g) const
 
 	D3DXMATRIX matWorld; //これをメンバにすれば省略できるがさてさて
 	D3DXMatrixIdentity(&matWorld);
+
 	//移動
 	//ここからピクセル座標(int)よりスクリーン座標(float)へ変換をする
 	matWorld._41 = static_cast<float>(m_pos.x);
