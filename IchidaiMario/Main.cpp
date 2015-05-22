@@ -26,7 +26,6 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 	//’èŒ^
 	MarioGame game;
 	game.Initialize();
-	game.SetTitleText("Žs‘åƒ}ƒŠƒI");
 	game.Show();
 
 	MSG msg;

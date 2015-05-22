@@ -4,11 +4,11 @@
     <Filter Include="Source">
       <UniqueIdentifier>{f36147b0-65d6-4ecc-9683-2224e0a1d1ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource">
-      <UniqueIdentifier>{9f2ceb4a-83c6-47ce-9605-d099099c7107}</UniqueIdentifier>
-    </Filter>
     <Filter Include="InfernoEngine">
       <UniqueIdentifier>{6f773d9c-408b-4b90-853a-f7f43974c844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{9be636cc-7895-4aa7-8581-d4d452851a01}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
