@@ -87,4 +87,9 @@
       <Filter>InfernoEngine</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource\teki.bmp">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
