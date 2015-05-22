@@ -31,21 +31,36 @@ void MarioGame::GameLoop()
 	//‚±‚±‚©‚çƒQ[ƒ€–{‘Ìˆ—
 
 	//“ü—Í—á
-	if (m_input.IsKeyPressed('A'))
+	if (m_input.IsKeyPressed('A') || m_input.IsButtonDown(PadButton::Button2) )
 	{
 		MessageBox(nullptr, "A‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½", "Message", MB_OK);
 	}
+	if ( m_input.IsButtonDown(PadButton::Button7) )
+	{
+		MessageBox(nullptr, "L‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½", "Message", MB_OK);
+	}
+	if (m_input.IsButtonDown(PadButton::Button6))
+	{
+		MessageBox(nullptr, "R2‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½", "Message", MB_OK);
+	}
 
 	//“G‚ğ“®‚©‚·
-	if (m_input.IsButtonDown(PadButton::Left))
+	if (m_input.IsButtonDown(PadButton::Left) || m_input.IsKeyDown(VK_LEFT) )
 	{
 		teki.RMove(-3, 0);
 	}
-	else if (m_input.IsButtonDown(PadButton::Right))
+	else if (m_input.IsButtonDown(PadButton::Right) || m_input.IsKeyDown(VK_RIGHT) )
 	{
 		teki.RMove(3, 0);
 	}
-	
+	if (m_input.IsButtonDown(PadButton::Up) || m_input.IsKeyDown(VK_UP))
+	{
+		teki.RMove(0, -3);
+	}
+	else if (m_input.IsButtonDown(PadButton::Down) || m_input.IsKeyDown(VK_DOWN))
+	{
+		teki.RMove(0, 3);
+	}
 }
 
 

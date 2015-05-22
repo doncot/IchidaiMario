@@ -20,8 +20,9 @@ namespace InputNS {
 	const int KeyLen = 256;
 
 	const int MaxButtonNumber = 32;
-	const int UseButtonNumber = 15; //実際に使うボタン数
+	const int UseButtonNumber = 16; //実際に使うボタン数
 	const int MaxPadNumber = 2; //同時認識できるパッドはAPI仕様上2つまで
+	const int DirectionKeyNumber = 4;
 	const int SensitivenessThreshold = 1000; //方向キーの感度（小さい方が感度が高い）
 }
 
@@ -29,20 +30,20 @@ namespace Inferno
 {
 	enum class PadButton : char
 	{
-		Up = 0,
+		Button1 = 0, //PSコンでは△
+		Button2, //PSコンでは○
+		Button3, //PSコンでは×
+		Button4, //PSコンでは□
+		Button5, //PSコンではL2
+		Button6, //PSコンではR2
+		Button7, //PSコンではL
+		Button8, //PSコンではStart
+		Button9, //PSコンではSelect
+		Button10, //PSコンでは未使用
+		Up = 12,
 		Right,
 		Down,
-		Left,
-		A,
-		B,
-		Y,
-		X,
-		L,
-		R,
-		L2,
-		R2,
-		Start,
-		Select,
+		Left
 	};
 
 class Input

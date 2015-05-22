@@ -110,19 +110,19 @@ void Input::Polling()
 	if (joyGetPosEx(JOYSTICKID1, &padInfo) == JOYERR_NOERROR)
 	{
 		//ボタン分だけ回す
-		for (int j = 0; j < MaxButtonNumber; j++)
+		for (int j = 0; j < MaxButtonNumber - DirectionKeyNumber; j++)
 		{
 			if (padInfo.dwButtons & JOY_BUTTON1 << j)
-				m_buttonStatus[JOYSTICKID1][JOY_BUTTON1 + j] = true;
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Button1) + j] = true;
 			else
-				m_buttonStatus[JOYSTICKID1][JOY_BUTTON1 + j] = false;
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Button1) + j] = false;
 		}
 
 		//方向キー
 		//ニュートラル
 		if ((padInfo.dwXpos - 0xffff) + (padInfo.dwYpos - 0xffff) == 0)
 		{
-			for (int i = 0; i < 4;i++)
+			for (int i = 0; i < DirectionKeyNumber; i++)
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up)+1] = true;
 		}
 
