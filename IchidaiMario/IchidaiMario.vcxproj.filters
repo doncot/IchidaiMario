@@ -94,5 +94,8 @@
     <Image Include="Resource\teki.bmp">
       <Filter>Resource</Filter>
     </Image>
+    <Image Include="Resource\background.png">
+      <Filter>Resource</Filter>
+    </Image>
   </ItemGroup>
 </Project>
