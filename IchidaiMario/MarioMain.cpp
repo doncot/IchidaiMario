@@ -5,6 +5,9 @@
 
 using namespace Inferno;
 
+#define GROUND_Y 500
+#define JUMP_H 200
+
 namespace
 {
 	//敵キャラなどの変数はここに書ける
@@ -27,25 +30,40 @@ void MarioGame::Initialize()
 //ゲームループ（処理はここに書いていく）
 void MarioGame::GameLoop()
 {
+	
+	int jump_start_y, jump_current_y;
+
 	Base::GameLoop();
 
 	//ここからゲーム本体処理
-	static int x = 200;
-	static int y = 200;
+
 	//入力例
-	if (m_input.IsKeyPressed('A'))
-	{
+	//if (m_input.IsKeyPressed('A'))
+	//{
 		
-		//x += 20;
-		//y += 20;
-		teki.RMove(x, y);
+		//teki.RMove(x, y);
 		//MessageBox(nullptr,"Aが押されました","Message",MB_OK);
-	}
+	//}
 
 	//右移動
 	if (m_input.IsKeyPressed(VK_RIGHT))
 	{
 		teki.RMove(5, 0);
+	}
+	//垂直ジャンプ
+	else if (m_input.IsKeyPressed(VK_UP))
+	{
+		jump_start_y = jump_current_y = teki.GetPosition().y;
+		while ((jump_start_y - jump_current_y) <= JUMP_H){
+			teki.RMove(0, -5);
+			jump_current_y = teki.GetPosition().y;
+			Draw();
+		}
+		while (jump_current_y <= jump_start_y){
+			teki.RMove(0, 5);
+			jump_current_y = teki.GetPosition().y;
+			Draw();
+		}
 	}
 
 	//敵を動かす
