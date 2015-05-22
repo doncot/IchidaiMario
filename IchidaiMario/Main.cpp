@@ -28,33 +28,34 @@ int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 	//グローバルエラーハンドラ
 	try
 	{
-	//定型
-	MarioGame game;
-	game.Initialize();
-	game.Show();
+		//定型
+		MarioGame game;
+		game.Initialize();
+		game.Show();
 
-	while (true)
-	{
-		if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
+		while (true)
 		{
-			//WM_QUITEがきたらGetMessageは0を返す
-			if (!GetMessage(&msg, NULL, 0, 0)) break;
-			TranslateMessage(&msg); //キーボード関連のメッセージを翻訳する
-			DispatchMessage(&msg); //OSにメッセージを渡す（＝ウィンドウプロシージャに渡す）
+			if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
+			{
+				//WM_QUITEがきたらGetMessageは0を返す
+				if (!GetMessage(&msg, NULL, 0, 0)) break;
+				TranslateMessage(&msg); //キーボード関連のメッセージを翻訳する
+				DispatchMessage(&msg); //OSにメッセージを渡す（＝ウィンドウプロシージャに渡す）
+			}
+			else
+			{
+				//ゲームループ
+				game.GameLoop();
+				//描画
+				game.Draw();
+			}
+			Sleep(1);
 		}
-		else
-		{
-			//ゲームループ
-			game.GameLoop();
-			//描画
-			game.Draw();
-		}
-		Sleep(1);
-	}
 	}
 	catch (exception e)
 	{
-		e.what();
+		MessageBox(nullptr, e.what(), "グローバルハンドルエラー", MB_OK | MB_ICONERROR );
+		return 0;
 	}
 
 	return msg.wParam; //作法
