@@ -7,6 +7,9 @@ using namespace Inferno;
 
 #define GROUND_Y 500
 #define JUMP_H 200
+#define TRUE 1
+#define FALSE 0
+
 
 namespace
 {
@@ -23,6 +26,7 @@ void MarioGame::Initialize()
 	//ここから初期化処理
 	teki.Initialize();
 	teki.LoadTextureFromFile(m_graphics, "teki.bmp");
+	teki.AMove(0, GROUND_Y);
 
 
 }
@@ -32,42 +36,51 @@ void MarioGame::GameLoop()
 {
 	
 	int jump_start_y, jump_current_y;
+	int jump_accel = 1;
+	int jump_speed = -20;
+	static int jump_state = FALSE;
+	static int VY, VX;
+	int current_y, current_x;
+	double speed = 2.0f;
 
 	Base::GameLoop();
 
 	//ここからゲーム本体処理
 
-	//入力例
-	//if (m_input.IsKeyPressed('A'))
-	//{
-		
-		//teki.RMove(x, y);
-		//MessageBox(nullptr,"Aが押されました","Message",MB_OK);
-	//}
+	//位置の取得
+	current_x = teki.GetPosition().x;
+	current_y = teki.GetPosition().y;
 
 	//右移動
 	if (m_input.IsKeyPressed(VK_RIGHT))
 	{
-		teki.RMove(5, 0);
+		current_x += speed;
 	}
-	//垂直ジャンプ
-	else if (m_input.IsKeyPressed(VK_UP))
+
+	//ジャンプキーの取得
+	if (m_input.IsKeyPressed(VK_UP))
 	{
-		jump_start_y = jump_current_y = teki.GetPosition().y;
-		while ((jump_start_y - jump_current_y) <= JUMP_H){
-			teki.RMove(0, -5);
-			jump_current_y = teki.GetPosition().y;
-			Draw();
-		}
-		while (jump_current_y <= jump_start_y){
-			teki.RMove(0, 5);
-			jump_current_y = teki.GetPosition().y;
-			Draw();
+		jump_state = TRUE;
+		VY = jump_speed;
+		//current_y += VY;
+	}
+
+	//ジャンプ状態の処理
+	else if (jump_state == TRUE){
+
+		//Y軸方向の速度に加速度を与える
+		VY += jump_accel;
+		//Y座標の更新
+		current_y += VY;
+
+		//着地の判定
+		if (VY > 0 && current_y > GROUND_Y){
+			jump_state = FALSE;
+			current_y = GROUND_Y;
 		}
 	}
 
-	//敵を動かす
-	//teki.RMove(1, 1);
+	teki.AMove(current_x, current_y);
 
 }
 
