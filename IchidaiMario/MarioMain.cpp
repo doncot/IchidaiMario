@@ -30,15 +30,26 @@ void MarioGame::GameLoop()
 	Base::GameLoop();
 
 	//‚±‚±‚©‚çƒQ[ƒ€–{‘Ìˆ—
-
+	static int x = 200;
+	static int y = 200;
 	//“ü—Í—á
 	if (m_input.IsKeyPressed('A'))
 	{
-		MessageBox(nullptr,"A‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½","Message",MB_OK);
+		
+		//x += 20;
+		//y += 20;
+		teki.RMove(x, y);
+		//MessageBox(nullptr,"A‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½","Message",MB_OK);
+	}
+
+	//‰EˆÚ“®
+	if (m_input.IsKeyPressed(VK_RIGHT))
+	{
+		teki.RMove(5, 0);
 	}
 
 	//“G‚ğ“®‚©‚·
-	teki.AMove(200, 200);
+	//teki.RMove(1, 1);
 
 }
 
