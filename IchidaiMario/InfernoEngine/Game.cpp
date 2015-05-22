@@ -1,5 +1,4 @@
 #include<Game.h>
-#include<Gamepad.h>
 #include"Graphics.h"
 
 

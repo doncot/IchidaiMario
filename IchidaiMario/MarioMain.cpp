@@ -19,7 +19,7 @@ void MarioGame::Initialize()
 	//‚±‚±‚©‚ç‰Šú‰»ˆ—
 	teki.Initialize();
 	teki.LoadTextureFromFile(m_graphics, "Resource\\teki.bmp");
-
+	teki.AMove(400, 400);
 
 }
 
@@ -33,13 +33,21 @@ void MarioGame::GameLoop()
 	//“ü—Í—á
 	if (m_input.IsKeyPressed('A'))
 	{
-		MessageBox(nullptr,"A‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½","Message",MB_OK);
+		MessageBox(nullptr, "A‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½", "Message", MB_OK);
 	}
 
 	//“G‚ğ“®‚©‚·
-	teki.AMove(200, 200);
-
+	if (m_input.IsButtonDown(PadButton::Left))
+	{
+		teki.RMove(-7, 0);
+	}
+	else if (m_input.IsButtonDown(PadButton::Right))
+	{
+		teki.RMove(7, 0);
+	}
+	
 }
+
 
 //•`‰æ
 void MarioGame::Draw()
