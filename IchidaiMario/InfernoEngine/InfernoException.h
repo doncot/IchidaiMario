@@ -52,5 +52,16 @@ public:
 	virtual const char* what() const { return MyExceptionBase_RuntimeError::what(); }
 };
 
+/*
+外部機器関連のランタイムエラー
+*/
+class ExternalDeviceError : public MyExceptionBase_RuntimeError{
+public:
+	ExternalDeviceError(const std::string& what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
+	ExternalDeviceError(const char* what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
+	virtual ~ExternalDeviceError(){}
+
+	virtual const char* what() const { return MyExceptionBase_RuntimeError::what(); }
+};
 
 }

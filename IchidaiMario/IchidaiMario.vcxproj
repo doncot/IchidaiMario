@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="InfernoEngine\CollisionDetector.cpp" />
     <ClCompile Include="InfernoEngine\Game.cpp" />
+    <ClCompile Include="InfernoEngine\Gamepad.cpp" />
     <ClCompile Include="InfernoEngine\GraphicsDirectX9X.cpp" />
     <ClCompile Include="InfernoEngine\Idea.cpp" />
     <ClCompile Include="InfernoEngine\Input.cpp" />
@@ -29,6 +30,7 @@
     <ClInclude Include="InfernoEngine\Common.h" />
     <ClInclude Include="InfernoEngine\Game.h" />
     <ClInclude Include="InfernoEngine\GameElements.h" />
+    <ClInclude Include="InfernoEngine\Gamepad.h" />
     <ClInclude Include="InfernoEngine\Graphics.h" />
     <ClInclude Include="InfernoEngine\Inferno.h" />
     <ClInclude Include="InfernoEngine\Input.h" />

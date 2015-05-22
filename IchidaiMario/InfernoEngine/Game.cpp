@@ -1,4 +1,5 @@
 #include<Game.h>
+#include<Gamepad.h>
 #include"Graphics.h"
 
 
@@ -59,6 +60,9 @@ void Game::GameLoop()
 	m_frameCount = m_elapsedFrame - previousFrame;
 	m_elapsedFrame++;
 	previousFrame = m_elapsedFrame;
+
+	//ポーリング
+	m_input.Polling();
 
 #ifdef _DEBUG
 	//Escキーでゲーム終了

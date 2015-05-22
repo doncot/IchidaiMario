@@ -1,8 +1,10 @@
 #include<Input.h>
+#include<InfernoException.h>
 
 //IME無効化の為に必要
 #include<imm.h>
 #pragma comment(lib, "imm32.lib")
+
 
 namespace Inferno
 {
@@ -81,10 +83,16 @@ void Input::EnableIME(HWND hWnd)
 	}
 }
 
+void Input::Polling()
+{
+	m_pad.Polling();
+}
+
 bool Input::InputProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 {
 	switch (msg)
 	{
+		//マウス
 	case WM_MOUSEMOVE:
 		m_mouseX = LOWORD(lp);
 		m_mouseY = HIWORD(lp);
@@ -100,6 +108,7 @@ bool Input::InputProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 		m_mouseX = LOWORD(lp);
 		m_mouseY = HIWORD(lp);
 		break;
+		//キーボード
 	case WM_KEYDOWN:
 		m_keysDown[wp] = true;
 		m_keysPressed[wp] = true;
