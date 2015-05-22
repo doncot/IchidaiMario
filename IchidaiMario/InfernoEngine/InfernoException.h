@@ -55,13 +55,13 @@ public:
 /*
 外部機器関連のランタイムエラー
 */
-class ExternalDeviceError : public MyExceptionBase_RuntimeError{
+class ExternalDeviceError : public RuntimeException{
 public:
-	ExternalDeviceError(const std::string& what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
-	ExternalDeviceError(const char* what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
+	ExternalDeviceError(const std::string& what_arg) : RuntimeException(what_arg) {}
+	ExternalDeviceError(const char* what_arg) : RuntimeException(what_arg) {}
 	virtual ~ExternalDeviceError(){}
 
-	virtual const char* what() const { return MyExceptionBase_RuntimeError::what(); }
+	virtual const char* what() const { return RuntimeException::what(); }
 };
 
 }
