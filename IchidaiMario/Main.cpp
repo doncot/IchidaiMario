@@ -1,6 +1,5 @@
 #include<Windows.h>
 #include<tchar.h>
-#include<Game.h>
 #include<memory>
 
 #include"MarioMain.h"
@@ -23,31 +22,39 @@ using namespace std;
 
 int WINAPI _tWinMain(HINSTANCE hInst, HINSTANCE, LPTSTR, int nCmdShow)
 {
-	//定型
-	MarioGame game;
-	game.Initialize();
-	game.Show();
-
 	MSG msg;
-	while (true)
-	{
-		if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
-		{
-			//WM_QUITEがきたらGetMessageは0を返す
-			if (!GetMessage(&msg, NULL, 0, 0)) break;
-			TranslateMessage(&msg); //キーボード関連のメッセージを翻訳する
-			DispatchMessage(&msg); //OSにメッセージを渡す（＝ウィンドウプロシージャに渡す）
-		}
-		else
-		{
-			//ゲームループ
-			game.GameLoop();
-			//描画
-			game.Draw();
-		}
-		Sleep(1);
-	}
 
+	//グローバルエラーハンドラ
+	try
+	{
+		//定型
+		MarioGame game;
+		game.Initialize();
+		game.Show();
+
+		while (true)
+		{
+			if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
+			{
+				//WM_QUITEがきたらGetMessageは0を返す
+				if (!GetMessage(&msg, NULL, 0, 0)) break;
+				TranslateMessage(&msg); //キーボード関連のメッセージを翻訳する
+				DispatchMessage(&msg); //OSにメッセージを渡す（＝ウィンドウプロシージャに渡す）
+			}
+			else
+			{
+				//ゲームループ
+				game.GameLoop();
+				//描画
+				game.Draw();
+			}
+			Sleep(1);
+		}
+	}
+	catch (exception e)
+	{
+		e.what();
+	}
 
 	return msg.wParam; //作法
 }
