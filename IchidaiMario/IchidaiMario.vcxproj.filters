@@ -48,6 +48,9 @@
     <ClCompile Include="InfernoEngine\CollisionDetector.cpp">
       <Filter>InfernoEngine</Filter>
     </ClCompile>
+    <ClCompile Include="InfernoEngine\MultiTexture.cpp">
+      <Filter>InfernoEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InfernoEngine\SimpleWindow.h">

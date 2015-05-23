@@ -16,6 +16,7 @@
     <ClCompile Include="InfernoEngine\GraphicsDirectX9X.cpp" />
     <ClCompile Include="InfernoEngine\Idea.cpp" />
     <ClCompile Include="InfernoEngine\Input.cpp" />
+    <ClCompile Include="InfernoEngine\MultiTexture.cpp" />
     <ClCompile Include="InfernoEngine\MyTypes.cpp" />
     <ClCompile Include="InfernoEngine\SimpleWindow.cpp" />
     <ClCompile Include="InfernoEngine\Substance.cpp" />
