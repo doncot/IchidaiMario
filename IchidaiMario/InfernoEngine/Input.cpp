@@ -99,13 +99,6 @@ bool Input::IsButtonDown(PadButton btn)
 	return m_buttonStatus[0][static_cast<int>(btn)];
 }
 
-bool Input::IsButtonPressed(PadButton btn)
-{
-	auto rvalue = m_buttonStatus[0][static_cast<int>(btn)];
-	m_buttonStatus[0][static_cast<int>(btn)] = false;
-	return rvalue;
-}
-
 void Input::Polling()
 {
 	JOYINFOEX padInfo;
