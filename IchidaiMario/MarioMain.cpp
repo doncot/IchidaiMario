@@ -63,22 +63,24 @@ void MarioGame::GameLoop()
 	static int jump_state = false;
 	static int VY, VX;
 	double speed = 2.0f;
-	struct xy_coord_t current_pos;
+	//struct xy_coord_t current_pos;
+	int current_x;
+	int current_y;
 
 	//位置の取得
 	//current_pos = getPos(teki);
-	current_pos.x = teki.GetPosition.x;
-	current_pos.y = teki.GetPosition.y;
+	current_x = teki.GetPosition().x;
+	current_y = teki.GetPosition().y;
 
 	//右移動
 	if (m_input.IsKeyDown(VK_RIGHT) || m_input.IsButtonDown(PadButton::Right))
 	{
-		current_pos.x += speed;
+		current_x += speed;
 	}
 	//左移動
 	if (m_input.IsKeyDown(VK_LEFT) || m_input.IsButtonDown(PadButton::Left))
 	{
-		current_pos.x -= speed;
+		current_x -= speed;
 	}
 	
 
@@ -95,7 +97,7 @@ void MarioGame::GameLoop()
 		//Y軸方向の速度に加速度を与える
 		VY += jump_accel;
 		//Y座標の更新
-		current_pos.y += VY;
+		current_y += VY;
 
 		//着地の判定
 		if (VY > 0 && current_y > GROUND_Y){
@@ -105,7 +107,7 @@ void MarioGame::GameLoop()
 	}
 
 
-	teki.AMove(current_pos.x, current_pos.y);
+	teki.AMove(current_x, current_y);
 }
 
 //描画

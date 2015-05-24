@@ -7,10 +7,12 @@ MarioMain.h
 
 using namespace Inferno;
 
+
 struct xy_coord_t{
 	double x;
 	double y;
 };
+
 
 class MarioGame final : public Game
 {
