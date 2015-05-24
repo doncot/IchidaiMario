@@ -40,7 +40,7 @@ void MarioGame::Initialize()
 //ゲームループ（処理はここに書いていく）
 void MarioGame::GameLoop()
 {
-	
+
 	int jump_start_y, jump_current_y;
 	int jump_accel = 1;
 	int jump_speed = -20;
@@ -84,7 +84,7 @@ void MarioGame::GameLoop()
 			current_y = GROUND_Y;
 		}
 	}
-	if ( m_input.IsButtonDown(PadButton::Button7) )
+	if (m_input.IsButtonDown(PadButton::Button7))
 	{
 		MessageBox(nullptr, "Lが押されました", "Message", MB_OK);
 	}
@@ -94,7 +94,7 @@ void MarioGame::GameLoop()
 	}
 
 	teki.AMove(current_x, current_y);
-
+}
 
 //描画
 void MarioGame::Draw()
