@@ -8,8 +8,8 @@ MarioMain.h
 using namespace Inferno;
 
 struct xy_coord_t{
-	int x;
-	int y;
+	double x;
+	double y;
 };
 
 class MarioGame final : public Game

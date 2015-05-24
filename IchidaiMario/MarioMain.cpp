@@ -19,11 +19,11 @@ using namespace Inferno;
 
 //位置を取得
 //TODO:引数にオブジェクトを渡す
-static struct xy_coord_t getPos(){
+static struct xy_coord_t getPos(Instant target){
 	struct xy_coord_t pos;
 
-	pos.x = teki.GetPosition().x;
-	pos.y = teki.GetPosition().y;
+	pos.x = target.GetPosition().x;
+	pos.y = target.GetPosition().y;
 
 	return pos;
 }
@@ -71,7 +71,9 @@ void MarioGame::GameLoop()
 	//ここからゲーム本体処理
 
 	//位置の取得
-	current_pos = getPos();
+	//current_pos = getPos(teki);
+	current_pos.x = teki.GetPosition.x;
+	current_pos.y = teki.GetPosition.y;
 
 	//右移動
 	if (m_input.IsKeyDown(VK_RIGHT) || m_input.IsButtonDown(PadButton::Right))
