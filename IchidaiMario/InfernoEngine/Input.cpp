@@ -131,23 +131,31 @@ void Input::Polling()
 		if ( nuturalPos >= -SensitivenessThreshold && nuturalPos <= SensitivenessThreshold )
 		{
 			for (int i = 0; i < DirectionKeyNumber; i++)
-				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up) + 1] = false;
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up) + i] = false;
 		}
 		//ニュートラルじゃないなら
 		else
 		{
 			//左
 			if (padInfo.dwXpos < (0x7fff - SensitivenessThreshold))
+			{
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Left)] = true;
+			}
 			//右
-			else if (padInfo.dwXpos >(0x7fff + SensitivenessThreshold))
+			else if (padInfo.dwXpos > (0x7fff + SensitivenessThreshold))
+			{
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Right)] = true;
+			}
 			//上		
 			if (padInfo.dwYpos < (0x7fff - SensitivenessThreshold))
+			{
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up)] = true;
+			}
 			//下
-			else if (padInfo.dwYpos >(0x7fff + SensitivenessThreshold))
+			else if (padInfo.dwYpos > (0x7fff + SensitivenessThreshold))
+			{
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Down)] = true;
+			}
 		}
 	}
 }
