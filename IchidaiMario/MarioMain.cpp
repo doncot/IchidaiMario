@@ -58,13 +58,13 @@ void MarioGame::GameLoop()
 	current_y = teki.GetPosition().y;
 
 	//右移動
-	if (m_input.IsKeyPressed(VK_RIGHT))
+	if (m_input.IsKeyPressed(VK_RIGHT) || m_input.IsButtonDown(PadButton::Right))
 	{
 		current_x += speed;
 	}
 
 	//ジャンプキーの取得
-	if (m_input.IsKeyPressed(VK_UP))
+	if (m_input.IsKeyPressed(VK_UP) || m_input.IsButtonDown(PadButton::Up) )
 	{
 		jump_state = TRUE;
 		VY = jump_speed;
@@ -84,14 +84,7 @@ void MarioGame::GameLoop()
 			current_y = GROUND_Y;
 		}
 	}
-	if (m_input.IsButtonDown(PadButton::Button7))
-	{
-		MessageBox(nullptr, "Lが押されました", "Message", MB_OK);
-	}
-	if (m_input.IsButtonDown(PadButton::Button6))
-	{
-		MessageBox(nullptr, "R2が押されました", "Message", MB_OK);
-	}
+
 
 	teki.AMove(current_x, current_y);
 }
