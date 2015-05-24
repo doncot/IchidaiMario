@@ -8,6 +8,23 @@ using namespace Inferno;
 #define GROUND_Y 500
 #define JUMP_H 200
 
+/* 移動可能領域 */
+#define MOVE_LEFT 0
+#define MOVE_TOP 0
+#define MOVE_RIGHT 800
+#define MOVE_BOTTOM 500
+
+
+//位置を取得
+//TODO:引数にオブジェクトを渡す
+static struct xy_coord_t getPos(Instant target){
+	struct xy_coord_t pos;
+
+	pos.x = target.GetPosition().x;
+	pos.y = target.GetPosition().y;
+
+	return pos;
+}
 
 namespace
 {
@@ -41,22 +58,27 @@ void MarioGame::GameLoop()
 	Base::GameLoop();
 	//ここからゲーム本体処理
 
-	int jump_start_y, jump_current_y;
 	int jump_accel = 1;
 	int jump_speed = -20;
 	static int jump_state = false;
 	static int VY, VX;
-	int current_y, current_x;
 	double speed = 2.0f;
+	struct xy_coord_t current_pos;
 
 	//位置の取得
-	current_x = teki.GetPosition().x;
-	current_y = teki.GetPosition().y;
+	//current_pos = getPos(teki);
+	current_pos.x = teki.GetPosition.x;
+	current_pos.y = teki.GetPosition.y;
 
 	//右移動
 	if (m_input.IsKeyDown(VK_RIGHT) || m_input.IsButtonDown(PadButton::Right))
 	{
-		current_x += speed;
+		current_pos.x += speed;
+	}
+	//左移動
+	if (m_input.IsKeyDown(VK_LEFT) || m_input.IsButtonDown(PadButton::Left))
+	{
+		current_pos.x -= speed;
 	}
 	
 
@@ -73,17 +95,17 @@ void MarioGame::GameLoop()
 		//Y軸方向の速度に加速度を与える
 		VY += jump_accel;
 		//Y座標の更新
-		current_y += VY;
+		current_pos.y += VY;
 
 		//着地の判定
 		if (VY > 0 && current_y > GROUND_Y){
-			jump_state = false;
+			jump_state = FALSE;
 			current_y = GROUND_Y;
 		}
 	}
 
 
-	teki.AMove(current_x, current_y);
+	teki.AMove(current_pos.x, current_pos.y);
 }
 
 //描画
