@@ -60,7 +60,7 @@ void MarioGame::GameLoop()
 
 	int jump_accel = 1;
 	int jump_speed = -20;
-	static int jump_state = false;
+	static bool jump_state = false;
 	static int VY, VX;
 	double speed = 2.0f;
 	//struct xy_coord_t current_pos;
