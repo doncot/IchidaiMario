@@ -62,7 +62,6 @@ void MarioGame::GameLoop()
 	{
 		jump_state = TRUE;
 		VY = jump_speed;
-		//current_y += VY;
 	}
 
 	//ƒWƒƒƒ“ƒvó‘Ô‚Ìˆ—
