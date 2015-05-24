@@ -38,6 +38,8 @@ void MarioGame::Initialize()
 //ゲームループ（処理はここに書いていく）
 void MarioGame::GameLoop()
 {
+	Base::GameLoop();
+	//ここからゲーム本体処理
 
 	int jump_start_y, jump_current_y;
 	int jump_accel = 1;
@@ -46,10 +48,6 @@ void MarioGame::GameLoop()
 	static int VY, VX;
 	int current_y, current_x;
 	double speed = 2.0f;
-
-	Base::GameLoop();
-
-	//ここからゲーム本体処理
 
 	//位置の取得
 	current_x = teki.GetPosition().x;
