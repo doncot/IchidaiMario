@@ -72,6 +72,7 @@ public:
 #pragma region ゲームパッド関連
 	//どのボタンが押されている状態か判定。1P用
 	bool IsButtonDown(PadButton btn);
+	bool IsButtonPressed(PadButton btn);
 	//ポーリング。ゲームループに置く
 	void Polling();
 #pragma endregion

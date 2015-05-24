@@ -99,6 +99,13 @@ bool Input::IsButtonDown(PadButton btn)
 	return m_buttonStatus[0][static_cast<int>(btn)];
 }
 
+bool Input::IsButtonPressed(PadButton btn)
+{
+	auto rvalue = m_buttonStatus[0][static_cast<int>(btn)];
+	m_buttonStatus[0][static_cast<int>(btn)] = false;
+	return rvalue;
+}
+
 void Input::Polling()
 {
 	JOYINFOEX padInfo;
@@ -120,7 +127,9 @@ void Input::Polling()
 
 		//方向キー
 		//ニュートラル
-		if ((padInfo.dwXpos - 0xffff) + (padInfo.dwYpos - 0xffff) == 0)
+		int temp = (padInfo.dwXpos - 0x7fff) + (padInfo.dwYpos - 0x7fff);
+		if ( static_cast<int>( (padInfo.dwXpos - 0x7fff) + (padInfo.dwYpos - 0x7fff) ) <= SensitivenessThreshold  
+			 &&  static_cast<int>( (padInfo.dwXpos - 0x7fff) + (padInfo.dwYpos - 0x7fff) ) >= -SensitivenessThreshold )
 		{
 			for (int i = 0; i < DirectionKeyNumber; i++)
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up) + 1] = false;
