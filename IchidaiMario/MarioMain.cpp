@@ -58,7 +58,7 @@ void MarioGame::GameLoop()
 	current_y = teki.GetPosition().y;
 
 	//‰EˆÚ“®
-	if (m_input.IsKeyPressed(VK_RIGHT) || m_input.IsButtonDown(PadButton::Right))
+	if (m_input.IsKeyDown(VK_RIGHT) || m_input.IsButtonDown(PadButton::Right))
 	{
 		current_x += speed;
 	}
