@@ -28,7 +28,7 @@ void MarioGame::Initialize()
 
 	//‚±‚±‚©‚ç‰Šú‰»ˆ—
 	teki.Initialize();
-	teki.LoadTextureFromFile(m_graphics, "teki.bmp");
+	teki.LoadTextureFromFile(m_graphics, "Resource\\teki.bmp");
 	teki.AMove(0, GROUND_Y);
 
 	background.Initialize();
