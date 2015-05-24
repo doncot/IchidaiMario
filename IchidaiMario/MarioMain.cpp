@@ -7,8 +7,6 @@ using namespace Inferno;
 
 #define GROUND_Y 500
 #define JUMP_H 200
-#define TRUE 1
-#define FALSE 0
 
 /* 移動可能領域 */
 #define MOVE_LEFT 0
@@ -57,18 +55,15 @@ void MarioGame::Initialize()
 //ゲームループ（処理はここに書いていく）
 void MarioGame::GameLoop()
 {
+	Base::GameLoop();
+	//ここからゲーム本体処理
 
 	int jump_accel = 1;
 	int jump_speed = -20;
-	static int jump_state = FALSE;
-
+	static int jump_state = false;
 	static int VY, VX;
 	double speed = 2.0f;
 	struct xy_coord_t current_pos;
-
-	Base::GameLoop();
-
-	//ここからゲーム本体処理
 
 	//位置の取得
 	//current_pos = getPos(teki);
@@ -90,12 +85,12 @@ void MarioGame::GameLoop()
 	//ジャンプキーの取得
 	if (m_input.IsKeyPressed(VK_UP) || m_input.IsButtonDown(PadButton::Up) )
 	{
-		jump_state = TRUE;
+		jump_state = true;
 		VY = jump_speed;
 	}
 
 	//ジャンプ状態の処理
-	else if (jump_state == TRUE){
+	else if (jump_state == true){
 
 		//Y軸方向の速度に加速度を与える
 		VY += jump_accel;
@@ -103,9 +98,9 @@ void MarioGame::GameLoop()
 		current_pos.y += VY;
 
 		//着地の判定
-		if (VY > 0 && current_pos.y > GROUND_Y){
+		if (VY > 0 && current_y > GROUND_Y){
 			jump_state = FALSE;
-			current_pos.y = GROUND_Y;
+			current_y = GROUND_Y;
 		}
 	}
 
