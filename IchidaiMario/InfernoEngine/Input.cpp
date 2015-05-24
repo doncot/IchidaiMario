@@ -78,27 +78,20 @@ m_LButtonPressed(false), m_mouseX(0), m_mouseY(0), m_hIMC(nullptr)
 	}
 #pragma endregion
 
-
-
-void Input::DisableIME(HWND hWnd)
-{
-	m_hIMC = ImmAssociateContext(hWnd, NULL);
-}
-
-void Input::EnableIME(HWND hWnd)
-{
-	if (m_hIMC)
-	{
-		ImmAssociateContext(hWnd, m_hIMC);
-	}
-}
-
 #pragma region ゲームパッド
 bool Input::IsButtonDown(PadButton btn)
 {
 	return m_buttonStatus[0][static_cast<int>(btn)];
 }
 
+bool Input::IsButtonPressed(PadButton btn)
+{
+	auto rvalue = m_buttonStatus[0][static_cast<int>(btn)];
+	m_buttonStatus[0][static_cast<int>(btn)] = false;
+	return rvalue;
+}
+
+/*
 void Input::Polling()
 {
 	JOYINFOEX padInfo;
@@ -156,14 +149,29 @@ void Input::Polling()
 		}
 	}
 }
+*/
+
 #pragma endregion
+
+void Input::DisableIME(HWND hWnd)
+{
+	m_hIMC = ImmAssociateContext(hWnd, NULL);
+}
+
+void Input::EnableIME(HWND hWnd)
+{
+	if (m_hIMC)
+	{
+		ImmAssociateContext(hWnd, m_hIMC);
+	}
+}
 
 #pragma region WindowProc
 bool Input::InputProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 {
 	switch (msg)
 	{
-		//マウス
+#pragma region マウス
 	case WM_MOUSEMOVE:
 		m_mouseX = LOWORD(lp);
 		m_mouseY = HIWORD(lp);
@@ -179,7 +187,8 @@ bool Input::InputProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 		m_mouseX = LOWORD(lp);
 		m_mouseY = HIWORD(lp);
 		break;
-		//キーボード
+#pragma endregion
+#pragma region キーボード
 	case WM_KEYDOWN:
 		m_keysDown[wp] = true;
 		m_keysPressed[wp] = true;
@@ -187,6 +196,75 @@ bool Input::InputProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 	case WM_KEYUP:
 		m_keysDown[wp] = false;
 		break;
+#pragma endregion
+#pragma region ゲームパッド
+	case MM_JOY1MOVE:
+		{
+			//パラメーターから入力方向を検出
+			int padX = LOWORD(lp);
+			int padY = HIWORD(lp);
+			//方向キー
+			//ニュートラル
+			if ( padX == 0x7eff && padY == 0x7eff )
+			{
+				for (int i = 0; i < DirectionKeyNumber; i++)
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up) + i] = false;
+			}
+			//ニュートラルじゃないなら
+			else
+			{
+				//右
+				if (padX == 0xffff)
+				{
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Right)] = true;
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Left)] = false;
+				}
+				//左
+				else if (padX == 0)
+				{
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Left)] = true;
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Right)] = false;
+				}
+				//上		
+				if (padY == 0)
+				{
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up)] = true;
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Down)] = false;
+				}
+				//下
+				else if (padY == 0xffff)
+				{
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Down)] = true;
+					m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up)] = false;
+				}
+			}
+		}
+		break;
+	case MM_JOY1BUTTONDOWN:
+		//ボタンが押されたとき
+		for (int i = 0; i < UseButtonNumber - DirectionKeyNumber; i++)
+		{
+			if (static_cast<unsigned>( wp & (JOY_BUTTON1 << i) ) )
+			{
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Button1) + i] = true;
+				//メッセージでは1ずつ処理するので、ここで帰る
+				break;
+			}
+		}
+		break;
+	case MM_JOY1BUTTONUP:
+		//ボタンが上がった時
+		for (int i = 0; i < UseButtonNumber - DirectionKeyNumber; i++)
+		{
+			if (static_cast<unsigned>(wp & (JOY_BUTTON1 << i)))
+			{
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Button1) + i] = false;
+				//メッセージでは1ずつ処理するので、ここで帰る
+				break;
+			}
+		}
+		break;
+#pragma endregion
 
 	default:
 		break;

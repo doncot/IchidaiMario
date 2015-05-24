@@ -232,6 +232,13 @@ LRESULT WINAPI SimpleWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 {
 	switch (msg)
 	{
+	case WM_CREATE:
+		//ここでジョイスティックのキャプチャを開始
+		if (joySetCapture(hWnd, JOYSTICKID1, NULL, FALSE) == JOYERR_UNPLUGGED) {
+			//キャプションに「失敗」したときはここにくる
+		}
+
+		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
