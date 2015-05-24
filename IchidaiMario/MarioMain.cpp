@@ -85,7 +85,7 @@ void MarioGame::GameLoop()
 	
 
 	//ジャンプキーの取得
-	if (m_input.IsKeyPressed(VK_UP) || m_input.IsButtonPressed(PadButton::Button3))
+	if (m_input.IsKeyPressed(VK_UP) || m_input.IsButtonPressed(PadButton::Up))
 	{
 		jump_state = true;
 		VY = jump_speed;
@@ -101,7 +101,7 @@ void MarioGame::GameLoop()
 
 		//着地の判定
 		if (VY > 0 && current_y > GROUND_Y){
-			jump_state = FALSE;
+			jump_state = false;
 			current_y = GROUND_Y;
 		}
 	}
