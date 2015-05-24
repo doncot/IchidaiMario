@@ -23,7 +23,7 @@ namespace InputNS {
 	const int UseButtonNumber = 16; //実際に使うボタン数
 	const int MaxPadNumber = 2; //同時認識できるパッドはAPI仕様上2つまで
 	const int DirectionKeyNumber = 4;
-	const int SensitivenessThreshold = 1000; //方向キーの感度（小さい方が感度が高い）
+	const int SensitivenessThreshold = 8000; //方向キーの感度（大きい方が感度が高い）
 }
 
 namespace Inferno

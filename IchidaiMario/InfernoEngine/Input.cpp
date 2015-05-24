@@ -136,25 +136,29 @@ void Input::Polling()
 		//ニュートラルじゃないなら
 		else
 		{
-			//左
-			if (padInfo.dwXpos < (0x7fff - SensitivenessThreshold))
-			{
-				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Left)] = true;
-			}
 			//右
-			else if (padInfo.dwXpos > (0x7fff + SensitivenessThreshold))
+			if (padInfo.dwXpos >(0xffff - SensitivenessThreshold))
 			{
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Right)] = true;
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Left)] = false;
+			}
+			//左
+			else if (padInfo.dwXpos < ( 0 + SensitivenessThreshold))
+			{
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Left)] = true;
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Right)] = false;
 			}
 			//上		
-			if (padInfo.dwYpos < (0x7fff - SensitivenessThreshold))
+			if (padInfo.dwYpos < (0 + SensitivenessThreshold))
 			{
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up)] = true;
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Down)] = false;
 			}
 			//下
-			else if (padInfo.dwYpos > (0x7fff + SensitivenessThreshold))
+			else if (padInfo.dwYpos > (0xffff - SensitivenessThreshold))
 			{
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Down)] = true;
+				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up)] = false;
 			}
 		}
 	}
