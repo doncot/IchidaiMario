@@ -40,6 +40,7 @@ namespace Inferno
 		Button8, //PSコンではStart
 		Button9, //PSコンではSelect
 		Button10, //PSコンでは未使用
+		//方向キー（PSコンではAnalogオフの時）
 		Up = 12,
 		Right,
 		Down,

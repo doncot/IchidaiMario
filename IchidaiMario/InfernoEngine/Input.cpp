@@ -110,7 +110,7 @@ void Input::Polling()
 	if (joyGetPosEx(JOYSTICKID1, &padInfo) == JOYERR_NOERROR)
 	{
 		//ƒ{ƒ^ƒ“•ª‚¾‚¯‰ñ‚·
-		for (int j = 0; j < MaxButtonNumber - DirectionKeyNumber; j++)
+		for (int j = 0; j < UseButtonNumber - DirectionKeyNumber; j++)
 		{
 			if (padInfo.dwButtons & JOY_BUTTON1 << j)
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Button1) + j] = true;
