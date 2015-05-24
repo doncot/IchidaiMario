@@ -127,9 +127,8 @@ void Input::Polling()
 
 		//方向キー
 		//ニュートラル
-		int temp = (padInfo.dwXpos - 0x7fff) + (padInfo.dwYpos - 0x7fff);
-		if ( static_cast<int>( (padInfo.dwXpos - 0x7fff) + (padInfo.dwYpos - 0x7fff) ) <= SensitivenessThreshold  
-			 &&  static_cast<int>( (padInfo.dwXpos - 0x7fff) + (padInfo.dwYpos - 0x7fff) ) >= -SensitivenessThreshold )
+		int nuturalPos = (padInfo.dwXpos - 0x7fff) + (padInfo.dwYpos - 0x7fff);
+		if ( nuturalPos >= -SensitivenessThreshold && nuturalPos <= SensitivenessThreshold )
 		{
 			for (int i = 0; i < DirectionKeyNumber; i++)
 				m_buttonStatus[JOYSTICKID1][static_cast<int>(PadButton::Up) + 1] = false;
