@@ -49,7 +49,7 @@ void Game::SetClientSize(const int width, const int height)
 {
 	Base::Resize(width, height);
 	Base::SetPos(Base::Center, Base::Center);
-	m_graphics.FlashBackScreen(0, 0, 128);
+	m_graphics.FlashBackScreen();
 }
 
 void Game::GameLoop()
@@ -60,6 +60,9 @@ void Game::GameLoop()
 	m_elapsedFrame++;
 	previousFrame = m_elapsedFrame;
 
+	//ポーリング
+	m_input.Polling();
+
 #ifdef _DEBUG
 	//Escキーでゲーム終了
 	if (m_input.IsKeyPressed(VK_ESCAPE))
@@ -69,14 +72,22 @@ void Game::GameLoop()
 #endif //_DEBUG
 }
 
-void Game::Draw()
-{
-
-}
+void Game::Draw() const {}
 
 void Game::Exit()
 {
 	Base::Terminate();
+}
+
+bool Game::BeginDrawing() const
+{
+	return m_graphics.BeginScene() && m_graphics.BeginSprite();
+}
+
+void Game::EndDrawing() const
+{
+	m_graphics.EndSprite();
+	m_graphics.EndScene();
 }
 
 }

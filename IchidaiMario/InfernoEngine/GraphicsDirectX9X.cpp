@@ -23,6 +23,7 @@ void Graphics::Initialize(HWND hWnd)
 	d3dp.EnableAutoDepthStencil = TRUE;
 	d3dp.AutoDepthStencilFormat = D3DFMT_D16;
 	d3dp.PresentationInterval = D3DPRESENT_INTERVAL_ONE; //V-SYNC‚ð‚·‚é
+								//D3DPRESENT_INTERVAL_DEFAULT;
 
 	m_d3d->CreateDevice(
 		D3DADAPTER_DEFAULT,

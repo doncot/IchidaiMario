@@ -23,9 +23,9 @@ struct SubRegion
 class Texture{
 public:
 	Texture();
-	~Texture();
+	virtual ~Texture();
 
-	//テクスチャを画像ファイルよりロード。分割はなし
+	//テクスチャを画像ファイルよりロード
 	void LoadImageFile(const Graphics& g, const std::string& filename);
 
 	unsigned GetWidth() const;
@@ -44,4 +44,13 @@ private:
 	unsigned m_height; 
 	//vector<SubRegion> m_subRegions; //テクスチャの中の分割したやつを記憶
 };
+
+/*
+複数のテクスチャを扱うクラス
+*/
+class MultiTexture : public Texture
+{
+	~MultiTexture() {}
+};
+
 }

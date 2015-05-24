@@ -15,6 +15,7 @@ namespace
 {
 	//敵キャラなどの変数はここに書ける
 	Instant teki;
+	Instant background;
 
 }
 
@@ -22,12 +23,17 @@ namespace
 void MarioGame::Initialize()
 {
 	Base::Initialize();
+	SetTitleText("市大マリオ"); //ウィンドウタイトルに表示する文字列
+	SetClientSize(800, 600);
 
 	//ここから初期化処理
 	teki.Initialize();
 	teki.LoadTextureFromFile(m_graphics, "teki.bmp");
 	teki.AMove(0, GROUND_Y);
 
+	background.Initialize();
+	background.LoadTextureFromFile(m_graphics, "Resource\\background.png");
+	background.SetPosofULCorner(0, 0);
 
 }
 
@@ -78,20 +84,28 @@ void MarioGame::GameLoop()
 			current_y = GROUND_Y;
 		}
 	}
+	if ( m_input.IsButtonDown(PadButton::Button7) )
+	{
+		MessageBox(nullptr, "Lが押されました", "Message", MB_OK);
+	}
+	if (m_input.IsButtonDown(PadButton::Button6))
+	{
+		MessageBox(nullptr, "R2が押されました", "Message", MB_OK);
+	}
 
 	teki.AMove(current_x, current_y);
 
-}
 
 //描画
 void MarioGame::Draw()
 {
-	if (m_graphics.BeginScene() && Base::m_graphics.BeginSprite())
+	if (BeginDrawing() == true)
 	{
-		//ここに描画処理を書く
+		//ここに描画処理を書く（上に書いた方から順番に描画される）
+		background.Draw(m_graphics);
+
 		teki.Draw(m_graphics);
 
 	}
-	m_graphics.EndSprite();
-	m_graphics.EndScene();
+	EndDrawing();
 }

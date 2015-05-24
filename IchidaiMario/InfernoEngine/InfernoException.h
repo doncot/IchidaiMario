@@ -10,16 +10,16 @@ namespace Inferno{
 #define THROW_EXCEPTION(EXCEPTION_TYPE, message) \
   throw EXCEPTION_TYPE(message, __FILE__, __func__, __LINE__)  
 
-class MyExceptionBase_RuntimeError: public std::runtime_error{
+class RuntimeException: public std::runtime_error{
 public:
 	//継承したコンストラクタ
-	MyExceptionBase_RuntimeError(const std::string& what_arg)
+	RuntimeException(const std::string& what_arg)
 		:runtime_error(what_arg),m_message(what_arg) {};
-	MyExceptionBase_RuntimeError(const char* what_arg)
+	RuntimeException(const char* what_arg)
 		:runtime_error(what_arg),m_message(what_arg) {};
 
 	//デストラクタを忘れずに仮想化
-	virtual ~MyExceptionBase_RuntimeError() {}
+	virtual ~RuntimeException() {}
     
 	virtual const char* what() const { return m_message.c_str(); }
 
@@ -30,27 +30,38 @@ protected:
 /*
 IO関連のランタイムエラー
 */
-class IOException : public MyExceptionBase_RuntimeError{
+class IOException : public RuntimeException{
 public:
-	IOException(const std::string& what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
-	IOException(const char* what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
+	IOException(const std::string& what_arg) : RuntimeException(what_arg) {}
+	IOException(const char* what_arg) : RuntimeException(what_arg) {}
 	virtual ~IOException(){}
 
-	virtual const char* what() const { return MyExceptionBase_RuntimeError::what(); }
+	virtual const char* what() const { return RuntimeException::what(); }
 
 };
 
 /*
 グラフィックス関連のランタイムエラー
 */
-class GraphicsError : public MyExceptionBase_RuntimeError{
+class GraphicsError : public RuntimeException{
 public:
-	GraphicsError(const std::string& what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
-	GraphicsError(const char* what_arg) : MyExceptionBase_RuntimeError(what_arg) {}
+	GraphicsError(const std::string& what_arg) : RuntimeException(what_arg) {}
+	GraphicsError(const char* what_arg) : RuntimeException(what_arg) {}
 	virtual ~GraphicsError(){}
 
-	virtual const char* what() const { return MyExceptionBase_RuntimeError::what(); }
+	virtual const char* what() const { return RuntimeException::what(); }
 };
 
+/*
+外部機器関連のランタイムエラー
+*/
+class ExternalDeviceError : public RuntimeException{
+public:
+	ExternalDeviceError(const std::string& what_arg) : RuntimeException(what_arg) {}
+	ExternalDeviceError(const char* what_arg) : RuntimeException(what_arg) {}
+	virtual ~ExternalDeviceError(){}
+
+	virtual const char* what() const { return RuntimeException::what(); }
+};
 
 }

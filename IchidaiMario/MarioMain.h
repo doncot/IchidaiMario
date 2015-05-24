@@ -3,11 +3,11 @@ MarioMain.h
 マリオ本体のヘダー
 */
 #pragma once
-#include<Game.h>
-#include<Input.h>
+#include<Inferno.h>
 
+using namespace Inferno;
 
-class MarioGame final : public Inferno::Game
+class MarioGame final : public Game
 {
 public:
 	void Initialize();
