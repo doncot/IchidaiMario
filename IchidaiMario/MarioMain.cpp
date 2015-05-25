@@ -60,7 +60,7 @@ void MarioGame::GameLoop()
 
 	int jump_accel = 1;
 	int jump_speed = -20;
-	static int jump_state = false;
+	static bool jump_state = false;
 	static int VY, VX;
 	double m_walk_speed = 2.0f;
 	//struct xy_coord_t current_pos;
@@ -85,7 +85,7 @@ void MarioGame::GameLoop()
 	
 
 	//ジャンプキーの取得
-	if (m_input.IsKeyPressed(VK_UP) || m_input.IsButtonDown(PadButton::Up) )
+	if (m_input.IsKeyPressed(VK_UP) || m_input.IsButtonPressed(PadButton::Up))
 	{
 		jump_state = true;
 		VY = jump_speed;
@@ -101,7 +101,7 @@ void MarioGame::GameLoop()
 
 		//着地の判定
 		if (VY > 0 && current_y > GROUND_Y){
-			jump_state = FALSE;
+			jump_state = false;
 			current_y = GROUND_Y;
 		}
 	}
@@ -121,7 +121,7 @@ void MarioGame::GameLoop()
 	else if (current_x >= MOVE_RIGHT){
 		current_x = MOVE_RIGHT;
 	}
-	
+
 
 	teki.AMove(current_x, current_y);
 }

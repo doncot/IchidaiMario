@@ -61,7 +61,7 @@ void Game::GameLoop()
 	previousFrame = m_elapsedFrame;
 
 	//ポーリング
-	m_input.Polling();
+//	m_input.Polling();
 
 #ifdef _DEBUG
 	//Escキーでゲーム終了
@@ -99,6 +99,8 @@ namespace
 		switch (msg)
 		{
 		case WM_DESTROY:
+			//ジョイスティックを解放する
+			joyReleaseCapture(JOYSTICKID1);
 			PostQuitMessage(0);
 			break;
 		default:
