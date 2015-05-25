@@ -9,7 +9,9 @@ namespace Inferno
 {
 Substance::Substance() 
 	: m_idea(nullptr), m_pos(Vec2<int>(0, 0)), m_attribute(0), m_angle(0), m_alpha(0xff)
-{}
+{
+	SetAttribute(GEAttribute::Visible, true);
+}
 Substance::Substance(const Idea& idea) 
 	: m_idea(&idea), m_pos(Vec2<int>(0, 0)), m_attribute(0), m_angle(0), m_alpha(0xff)
 {
