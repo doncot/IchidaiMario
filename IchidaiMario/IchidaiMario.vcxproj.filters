@@ -100,5 +100,8 @@
     <Image Include="Resource\background.png">
       <Filter>Resource</Filter>
     </Image>
+    <Image Include="Resource\player.bmp">
+      <Filter>Resource</Filter>
+    </Image>
   </ItemGroup>
 </Project>
