@@ -62,7 +62,7 @@ void MarioGame::GameLoop()
 	int jump_speed = -20;
 	static int jump_state = false;
 	static int VY, VX;
-	double speed = 2.0f;
+	double m_walk_speed = 2.0f;
 	//struct xy_coord_t current_pos;
 	int current_x;
 	int current_y;
@@ -75,12 +75,12 @@ void MarioGame::GameLoop()
 	//‰EˆÚ“®
 	if (m_input.IsKeyDown(VK_RIGHT) || m_input.IsButtonDown(PadButton::Right))
 	{
-		current_x += speed;
+		current_x += m_walk_speed;
 	}
 	//¶ˆÚ“®
 	if (m_input.IsKeyDown(VK_LEFT) || m_input.IsButtonDown(PadButton::Left))
 	{
-		current_x -= speed;
+		current_x -= m_walk_speed;
 	}
 	
 
