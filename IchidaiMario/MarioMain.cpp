@@ -106,6 +106,22 @@ void MarioGame::GameLoop()
 		}
 	}
 
+	//c•ûŒü‚ÌˆÚ“®”ÍˆÍ‚ğ§ŒÀ‚·‚é
+	if (current_y <= MOVE_TOP){
+		current_y = MOVE_TOP;
+	}
+	else if (current_y >= MOVE_BOTTOM){
+		current_y = MOVE_BOTTOM;
+	}
+
+	//‰¡•ûŒü‚ÌˆÚ“®”ÍˆÍ‚ğ§ŒÀ‚·‚é
+	if (current_x <= MOVE_LEFT){
+		current_x = MOVE_LEFT;
+	}
+	else if (current_x >= MOVE_RIGHT){
+		current_x = MOVE_RIGHT;
+	}
+	
 
 	teki.AMove(current_x, current_y);
 }
