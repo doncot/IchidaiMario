@@ -51,6 +51,9 @@
     <ClCompile Include="InfernoEngine\MultiTexture.cpp">
       <Filter>InfernoEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InfernoEngine\SimpleWindow.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="InfernoEngine\Inferno.h">
       <Filter>InfernoEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
