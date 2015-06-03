@@ -39,7 +39,7 @@ public:
 	Vec2<int> GetDrawBase() const;
 
 	//テクスチャの設定を渡すことを考えてのテクスチャクラス渡しだが
-	//冗長なのでファイル名だけにした方がよい（←なぜだっけ？）
+	//冗長なのでファイル名だけにした方がよい（リソースファイル形式にすればテクスチャクラスはIdea持ちになれる……か？）
 	void SetTexture(const Texture& tex);
 	const Texture* GetTexture() const;
 	bool IsTextureSet() const;
@@ -95,6 +95,7 @@ public:
 	void SetAttribute(GEAttribute attr, bool value);
 	bool CheckAttribute(GEAttribute attr) const;
 	
+	//透明度設定
 	void SetAlpha(const int alpha);
 
 	virtual void Update();
